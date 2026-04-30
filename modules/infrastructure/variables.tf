@@ -82,6 +82,12 @@ variable "private_subnet_2_name" {
   default = "private_subnet_2"
 }
 
+variable "public_subnet_map_public_ip_on_launch" {
+  description = "value"
+  type = bool
+  default = true
+}
+
 variable "public_route_table_name" {
   description = "The name of route table"
   type = string
