@@ -68,3 +68,22 @@ resource "aws_route_table" "public_route_table" {
     environment = var.vpc_environment
   }
 }
+
+#8. Create a route table destination CIDR block
+resource "aws_route" "public_internet_access" {
+  route_table_id = aws_route_table.public_route_table.id
+  destination_cidr_block = var.public_route_destination_cidr_block
+  gateway_id = aws_internet_gateway.main_internet_gateway.id
+}
+
+#9 Create a route table Association for subnet 1
+resource "aws_route_table_association" "public_subnet_1_association" {
+  subnet_id = aws_subnet.public_subnet_1.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+#9 Create a route table Association for subnet 2
+resource "aws_route_table_association" "public_subnet_2_association" {
+  subnet_id = aws_subnet.public_subnet_2.id
+  route_table_id = aws_route_table.public_route_table.id
+}
