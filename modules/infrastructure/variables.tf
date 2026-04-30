@@ -87,3 +87,9 @@ variable "public_route_table_name" {
   type = string
   default = "public_route_table"
 }
+
+variable "public_route_destination_cidr_block" {
+  description = "value"
+  type = string
+  default = "0.0.0.0/0"
+}
