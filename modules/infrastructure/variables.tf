@@ -123,3 +123,15 @@ variable "nat-gateway-az2" {
   type        = string
   default     = "nat-gateway-az2"
 }
+
+variable "private_route_table_az1_name" {
+  description = "Private Route Table AZ1 Name"
+  type        = string
+  default     = "private-route-table-az1"
+}
+
+variable "private_route_table_az2_name" {
+  description = "Private Route Table AZ1 Name"
+  type        = string
+  default     = "private-route-table-az2"
+}
