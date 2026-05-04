@@ -176,19 +176,19 @@ resource "aws_route_table_association" "private_subnet_2_association" {
 
 #20. Security group for public instances
 resource "aws_security_group" "public_instance_sg" {
-  name = "public-instance-sg"
+  name        = "public-instance-sg"
   description = "Security group for public instances"
-  vpc_id = aws_vpc.main_vpc.id
+  vpc_id      = aws_vpc.main_vpc.id
   ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = [var.public_subnet_1_cidr_block]
   }
   egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = [var.public_route_destination_cidr_block]
   }
   tags = {
@@ -199,19 +199,19 @@ resource "aws_security_group" "public_instance_sg" {
 
 #21. Security group for private instances
 resource "aws_security_group" "private_instance_sg" {
-  name = "private-instance-sg"
+  name        = "private-instance-sg"
   description = "Security group for private instances"
-  vpc_id = aws_vpc.main_vpc.id
+  vpc_id      = aws_vpc.main_vpc.id
   ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = [var.public_route_destination_cidr_block]
   }
   egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = [var.public_route_destination_cidr_block]
   }
   tags = {
@@ -222,10 +222,10 @@ resource "aws_security_group" "private_instance_sg" {
 
 #22. Public instance 1
 resource "aws_instance" "public_instance_1" {
-  ami = var.ami_id
-  instance_type = var.instance_type
-  key_name = var.key_name
-  subnet_id = aws_subnet.public_subnet_1.id
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = aws_subnet.public_subnet_1.id
   vpc_security_group_ids = [aws_security_group.public_instance_sg.id]
   tags = {
     Name        = var.public_instance_1_name
@@ -235,10 +235,10 @@ resource "aws_instance" "public_instance_1" {
 
 #23. Public instance 2
 resource "aws_instance" "public_instance_2" {
-  ami = var.ami_id
-  instance_type = var.instance_type
-  key_name = var.key_name
-  subnet_id = aws_subnet.public_subnet_2.id
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = aws_subnet.public_subnet_2.id
   vpc_security_group_ids = [aws_security_group.public_instance_sg.id]
   tags = {
     Name        = var.public_instance_2_name
@@ -248,10 +248,10 @@ resource "aws_instance" "public_instance_2" {
 
 #24. Private instance 1
 resource "aws_instance" "private_instance_1" {
-  ami = var.ami_id
-  instance_type = var.instance_type
-  key_name = var.key_name
-  subnet_id = aws_subnet.private_subnet_1.id
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = aws_subnet.private_subnet_1.id
   vpc_security_group_ids = [aws_security_group.private_instance_sg.id]
   tags = {
     Name        = var.private_instance_1_name
@@ -261,10 +261,10 @@ resource "aws_instance" "private_instance_1" {
 
 #25. Private instance 2
 resource "aws_instance" "private_instance_2" {
-  ami = var.ami_id
-  instance_type = var.instance_type
-  key_name = var.key_name
-  subnet_id = aws_subnet.private_subnet_2.id
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = aws_subnet.private_subnet_2.id
   vpc_security_group_ids = [aws_security_group.private_instance_sg.id]
   tags = {
     Name        = var.private_instance_2_name
