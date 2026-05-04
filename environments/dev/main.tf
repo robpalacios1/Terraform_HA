@@ -22,4 +22,7 @@ module "infrastructure" {
   private_subnet_2_cidr_block = "10.0.4.0/24"
   public_route_destination_cidr_block = "0.0.0.0/0"
   public_subnet_map_public_ip_on_launch = true
+  vpc_cidr_block = "10.0.0.0/16"
+  availability_zone_1 = "us-east-1a"
+  availability_zone_2 = "us-east-1b"
 }
