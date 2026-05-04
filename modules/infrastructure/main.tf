@@ -174,6 +174,7 @@ resource "aws_route_table_association" "private_subnet_2_association" {
   route_table_id = aws_route_table.private_route_table_az2.id
 }
 
+#20. Security group for public instances
 resource "aws_security_group" "public_instance_sg" {
   name = "public-instance-sg"
   description = "Security group for public instances"
@@ -196,6 +197,7 @@ resource "aws_security_group" "public_instance_sg" {
   }
 }
 
+#21. Security group for private instances
 resource "aws_security_group" "private_instance_sg" {
   name = "private-instance-sg"
   description = "Security group for private instances"
@@ -218,6 +220,7 @@ resource "aws_security_group" "private_instance_sg" {
   }
 }
 
+#22. Public instance 1
 resource "aws_instance" "public_instance_1" {
   ami = var.ami_id
   instance_type = var.instance_type
@@ -230,6 +233,7 @@ resource "aws_instance" "public_instance_1" {
   }
 }
 
+#23. Public instance 2
 resource "aws_instance" "public_instance_2" {
   ami = var.ami_id
   instance_type = var.instance_type
@@ -242,6 +246,7 @@ resource "aws_instance" "public_instance_2" {
   }
 }
 
+#24. Private instance 1
 resource "aws_instance" "private_instance_1" {
   ami = var.ami_id
   instance_type = var.instance_type
@@ -254,6 +259,7 @@ resource "aws_instance" "private_instance_1" {
   }
 }
 
+#25. Private instance 2
 resource "aws_instance" "private_instance_2" {
   ami = var.ami_id
   instance_type = var.instance_type
