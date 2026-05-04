@@ -49,7 +49,7 @@ variable "internet_gateway_name" {
 variable "ami_id" {
   description = "The ID of the AMI to use for the instance"
   type        = string
-  default     = "ami-08976229d8b10b097"
+  default     = "ami-0ed094fb1304fd857"
 }
 
 variable "instance_type" {
