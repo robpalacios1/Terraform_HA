@@ -92,7 +92,7 @@ resource "aws_route_table_association" "public_subnet_2_association" {
 
 #10. Elastic IPs for NAT1
 resource "aws_eip" "nat_eip_az1" {
-  domain = "vpc"
+  vpc = true
   tags = {
     Name        = var.nat_eip_az1
     environment = var.vpc_environment
@@ -101,7 +101,7 @@ resource "aws_eip" "nat_eip_az1" {
 
 #11. Elastic IPs for NAT2
 resource "aws_eip" "nat_eip_az2" {
-  domain = "vpc"
+  vpc = true
   tags = {
     Name        = var.nat_eip_az2
     environment = var.vpc_environment
@@ -113,7 +113,7 @@ resource "aws_nat_gateway" "aws_nat_gateway_az1" {
   allocation_id = aws_eip.nat_eip_az1.id
   subnet_id     = aws_subnet.public_subnet_1.id
   tags = {
-    Name        = var.nat-gateway-az1
+    Name        = var.nat_gateway_az1
     environment = var.vpc_environment
   }
   depends_on = [aws_internet_gateway.main_internet_gateway]
@@ -124,7 +124,7 @@ resource "aws_nat_gateway" "aws_nat_gateway_az2" {
   allocation_id = aws_eip.nat_eip_az2.id
   subnet_id     = aws_subnet.public_subnet_2.id
   tags = {
-    Name        = var.nat-gateway-az2
+    Name        = var.nat_gateway_az2
     environment = var.vpc_environment
   }
   depends_on = [aws_internet_gateway.main_internet_gateway]
