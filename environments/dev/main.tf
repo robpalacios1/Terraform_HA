@@ -25,7 +25,7 @@ module "infrastructure" {
   vpc_cidr_block                        = "10.0.0.0/16"
   availability_zone_1                   = "us-east-1a"
   availability_zone_2                   = "us-east-1b"
-  ami_id                                = "ami-0c55b159cbfafe1f0"
+  ami_id                                = "ami-08976229d8b10b097"
   instance_type                         = "t3.micro"
   key_name                              = "terraform-key"
   public_instance_sg_name               = "dev-public-instance-sg"
