@@ -112,13 +112,13 @@ variable "nat_eip_az2" {
   default     = "nat-eip-az2"
 }
 
-variable "nat-gateway-az1" {
+variable "nat_gateway_az1" {
   description = "NAT Gateway for AZ1"
   type        = string
   default     = "nat-gateway-az1"
 }
 
-variable "nat-gateway-az2" {
+variable "nat_gateway_az2" {
   description = "NAT Gateway for AZ2"
   type        = string
   default     = "nat-gateway-az2"
