@@ -173,3 +173,95 @@ resource "aws_route_table_association" "private_subnet_2_association" {
   subnet_id      = aws_subnet.private_subnet_2.id
   route_table_id = aws_route_table.private_route_table_az2.id
 }
+
+resource "aws_security_group" "public_instance_sg" {
+  name = "public-instance-sg"
+  description = "Security group for public instances"
+  vpc_id = aws_vpc.main_vpc.id
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = [var.public_subnet_1_cidr_block]
+  }
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = [var.public_route_destination_cidr_block]
+  }
+  tags = {
+    Name        = var.public_instance_sg_name
+    environment = var.vpc_environment
+  }
+}
+
+resource "aws_security_group" "private_instance_sg" {
+  name = "private-instance-sg"
+  description = "Security group for private instances"
+  vpc_id = aws_vpc.main_vpc.id
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = [var.public_route_destination_cidr_block]
+  }
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = [var.public_route_destination_cidr_block]
+  }
+  tags = {
+    Name        = var.private_instance_sg_name
+    environment = var.vpc_environment
+  }
+}
+
+resource "aws_instance" "public_instance_1" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+  subnet_id = aws_subnet.public_subnet_1.id
+  vpc_security_group_ids = [aws_security_group.public_instance_sg.id]
+  tags = {
+    Name        = var.public_instance_1_name
+    environment = var.vpc_environment
+  }
+}
+
+resource "aws_instance" "public_instance_2" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+  subnet_id = aws_subnet.public_subnet_2.id
+  vpc_security_group_ids = [aws_security_group.public_instance_sg.id]
+  tags = {
+    Name        = var.public_instance_2_name
+    environment = var.vpc_environment
+  }
+}
+
+resource "aws_instance" "private_instance_1" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+  subnet_id = aws_subnet.private_subnet_1.id
+  vpc_security_group_ids = [aws_security_group.private_instance_sg.id]
+  tags = {
+    Name        = var.private_instance_1_name
+    environment = var.vpc_environment
+  }
+}
+
+resource "aws_instance" "private_instance_2" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+  subnet_id = aws_subnet.private_subnet_2.id
+  vpc_security_group_ids = [aws_security_group.private_instance_sg.id]
+  tags = {
+    Name        = var.private_instance_2_name
+    environment = var.vpc_environment
+  }
+}
