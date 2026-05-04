@@ -46,6 +46,60 @@ variable "internet_gateway_name" {
   default     = "main_internet_gateway"
 }
 
+variable "ami_id" {
+  description = "The ID of the AMI to use for the instance"
+  type        = string
+  default     = "ami-0c55b159cbfafe1f0"
+}
+
+variable "instance_type" {
+  description = "The type of instance to use for the instance"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "key_name" {
+  description = "The name of the key pair to use for the instance"
+  type        = string
+  default     = "terraform-key"
+}
+
+variable "public_instance_sg_name" {
+  description = "The name of the security group for the public instances"
+  type        = string
+  default     = "public-instance-sg"
+}
+
+variable "private_instance_sg_name" {
+  description = "The name of the security group for the private instances"
+  type        = string
+  default     = "private-instance-sg"
+}
+
+variable "public_instance_1_name" {
+  description = "The name of the first public instance"
+  type        = string
+  default     = "dev-public-ec2-1"
+}
+
+variable "public_instance_2_name" {
+  description = "The name of the second public instance"
+  type        = string
+  default     = "dev-public-ec2-2"
+}
+
+variable "private_instance_1_name" {
+  description = "The name of the first private instance"
+  type        = string
+  default     = "dev-private-ec2-1"
+}
+
+variable "private_instance_2_name" {
+  description = "The name of the second private instance"
+  type        = string
+  default     = "dev-private-ec2-2"
+}
+
 variable "availability_zone_1" {
   description = "The availability zone for the first subnet"
   type        = string
