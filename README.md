@@ -73,3 +73,7 @@ If you add or change the backend for the first time, Terraform may prompt to mig
 
 - NAT Gateways and Elastic IPs incur roughly hourly charges on AWS in addition to data transfer.
 - The S3 bucket name and DynamoDB table name in `providers.tf` are what this project uses today; if you rename resources in AWS, update that file so it stays in sync.
+
+## Author
+
+- **Roberto Palacios** — [LinkedIn](https://www.linkedin.com/in/robpalacios1/)
