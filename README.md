@@ -1,4 +1,4 @@
-# High Availability on Terraform
+# High Availbility in Terraform
 
 **Terraform** infrastructure-as-code on AWS: a multi-AZ VPC with public and private subnets, one NAT gateway per availability zone, and four EC2 instances (two public, two private). Terraform state is configured for remote storage in **S3** with locking in **DynamoDB**.
 
